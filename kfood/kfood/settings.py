@@ -125,7 +125,5 @@ STATIC_URL = '/static/'
 
 # Kfood photo classifier
 KFOOD_PB_FILE = os.path.join(BASE_DIR, 'photos', 'kfood_graph.pb')
-#KFOOD_CKPT_FILE = os.path.join(BASE_DIR, 'photos', 'kfood.ckpt')
 KFOOD_LABELS_FILE = os.path.join(BASE_DIR, 'photos', 'kfood_output_labels.txt')
 KFOOD_FINAL_TENSOR = 'final_result:0'
-#KFOOD_FINAL_TENSOR = 'softmax:0'

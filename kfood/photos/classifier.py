@@ -17,19 +17,11 @@ def create_graph(pb_file):
 # Prepare tensorflow
 sess = tf.Session()
 create_graph(settings.KFOOD_PB_FILE)
-# saver = tf.train.Saver()
-# with tf.Session() as sess:
-#     saver.restore(sess, settings.KFOOD_CKPT_FILE)
 with open(settings.KFOOD_LABELS_FILE, 'r') as f:
     labels = list(map(str.strip, f.readlines()))
 
 
 def classify(image_data):
-    print("Helloo========================")
-    print(type(image_data))
-    # print(sess.graph.get_operations())
-    # print(sess.graph.as_graph_def().node)
-    print("==============================")
     softmax_tensor = sess.graph.get_tensor_by_name(
         settings.KFOOD_FINAL_TENSOR)
     scores = np.squeeze(

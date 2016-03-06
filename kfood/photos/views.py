@@ -11,6 +11,7 @@ def index(request):
     if request.method == 'POST':
         form = PhotoForm(request.POST, request.FILES)
         if form.is_valid():
+            # Classify image
             label = classify(request.FILES['photo'].read())
             messages.success(
                 request,
