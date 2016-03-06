@@ -3,15 +3,18 @@ from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 from .forms import PhotoForm
+from .classifier import classify
 
 
 def index(request):
-
+    # Photo uploading view
     if request.method == 'POST':
         form = PhotoForm(request.POST, request.FILES)
         if form.is_valid():
-            #handle_uploaded_file(request.FILES['file'])
-            messages.success(request, "Photo upload successful")
+            label = classify(request.FILES['photo'].read())
+            messages.success(
+                request,
+                "Photo upload successful. Classified as: {}".format(label))
             return HttpResponseRedirect(reverse('photos:index'))
         else:
             messages.warning(request, "Photo upload failed")

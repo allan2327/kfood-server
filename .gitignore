@@ -70,3 +70,8 @@ target/
 
 # dotenv
 .env
+
+# tensorflow
+*kfood.ckpt
+*kfood_graph.pb
+*kfood_output_labels.txt
